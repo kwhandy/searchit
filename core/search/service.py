@@ -1,77 +1,51 @@
 import json
-import urllib
-
+import requests
 
 def read_bing_key():
-
     bing_api_key = None
 
     try:
         with open('bing.key', 'r') as f:
-            bing_api_key = f.readline()
-    
+            bing_api_key = f.readline().strip()
     except:
-        raise IOError('bing.key file not found')
+        try:
+            with open('../bing.key', 'r') as f:
+                bing_api_key = f.readline().strip()
+        except:
+            raise IOError('bing.key file not found!')
+
+    if not bing_api_key:
+        raise KeyError('Bing key not found.')
 
     return bing_api_key
 
-
 def run_query(search_terms):
+    bing_key = read_bing_key()
+    search_url = 'https://api.cognitive.microsoft.com/bing/v7.0/search'
+    headers = {'Ocp-Apim-Subscription-Key': bing_key}
+    params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML'}
 
-    bing_api_key = read_bing_key()
-
-    if not bing_api_key:
-        raise KeyError("Bing Key Not Found")
-
-
-    root_url = 'https://api.datamarket.azure.com/Bing/Search/'
-    service = 'Web'
-
-    results_per_page = 10
-    offset = 0
-
-    query = "'{0}'".format(search_terms)
-
-    q = urllib.parse.quote(query)
-
-    search_url = "{0}{1}?$format=json&$top={2}&$skip={3}&$Query={4}".format(
-        root_url,
-        service,
-        results_per_page,
-        offset,
-        query
-    )
-
-    username = ''
-
-    password_mgr = urllib.request.HTTPPasswordMgrWithDefaultRealm()
-
-    password_mgr.add_password(None, search_url, username, bing_api_key)
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
 
     results = []
-
-    try:
-        handler = urllib.request.HTTPBasicAuthHandler(password_mgr)
-        opener = urllib.request.build_opener(handler)
-        urllib.request.install_opener(opener)
-
-        response = urllib.request.urlopen(search_url).read()
-        response = response.decode('utf-8')
-
-        json_response = json.loads(response)
-
-        for result in json_response['d']['results']:
-            results.append(
-                {
-                    'title': result['Title'],
-                    'link': result['Url'],
-                    'summary': result['Description']
-                }
-            )
-
-    except:
-        print("Error when querying the Bing API")
+    for result in search_results['webPages']['value']:
+        results.append({
+            'title': result['name'],
+            'link': result['url'],
+            'summary': result['snippet'],
+        })
 
     return results
 
+def main():
+    print("Bing search")
+    query_str = input("Enter a query to search for: ")
+    results = run_query(query_str)
 
+    for result in results:
+        print(result['title'])
+
+if __name__ == '__main__':
+    main()

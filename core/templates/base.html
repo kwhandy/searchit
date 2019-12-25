@@ -6,30 +6,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}Joineka{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
     <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="author" content="joineka engineering">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
-
     {% block css %}
-    
-    <!-- Latest compiled and minified Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-
-    <!-- Your stuff: Third-party CSS libraries go here -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
     {% compress css %}
-    <!-- This file stores project-specific CSS -->
-    
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
     <style>
-        
+
         button:focus {
           box-shadow: none !important;
           outline: none !important;
@@ -46,7 +37,7 @@
           font-size: 16px;
           background-color: white;
           background-image: url('https://api.iconify.design/simple-line-icons:magnifier.svg?color=%23b5b5b5');
-          background-position: 15px 12px; 
+          background-position: 15px 12px;
           background-repeat: no-repeat;
           padding: 10px 20px 10px 40px;
           margin-right: 5px;
@@ -116,27 +107,25 @@
       {% block content %}
       {% endblock content %}
 
-    </div> <!-- /container -->
+    </div>
 
     {% block modal %}{% endblock modal %}
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     {% block javascript %}
-      
-      <!-- Bootstrap JS and its dependencies-->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
-      
-
-      <!-- place project specific Javascript in this file -->
       {% compress js %}
       <script src="{% static 'js/project.js' %}"></script>
       <script>
+
+      $('#dQ2i_').keydown(function(event) {
+           if (event.keyCode == 13) {
+              this.form.submit();
+              return false;
+           }
+      });
+
       var TxtType = function(el, toRotate, period) {
           this.toRotate = toRotate;
           this.el = el;
@@ -187,7 +176,7 @@
                 new TxtType(elements[i], JSON.parse(toRotate), period);
               }
           }
-          // INJECT CSS
+
           var css = document.createElement("style");
           css.type = "text/css";
           css.innerHTML = ".typewrite > .wrap { border-right: 0.15rem solid #ff3300}";
@@ -199,4 +188,3 @@
     {% endblock javascript %}
   </body>
 </html>
- 
