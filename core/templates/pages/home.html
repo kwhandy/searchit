@@ -6,13 +6,11 @@
         <div class="col-12 col-sm-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 offset-xl-3">
             <div class="ibox float-e-margins mt-5 pt-2">
                 <div class="ibox-content mt-5 text-center">
-                    <a href="" onclick="return false;" class="typewrite h3 card-link" style="color: #ff3300;cursor: default;" data-period="1000" data-type='[ "Hai!", "Joineka itu seperti Yahoo,", "atau Google,", "tapi kami tak melacakmu.", "Mulai mencari di Joineka sekarang:)" ]'>
+                    <a href="" onclick="return false;" class="typewrite h3 card-link" style="color: #ff3300;cursor: default;" data-period="1000" data-type='[ "Hai!", "Joineka itu seperti Yahoo,", "atau Google,", "tapi ini tak melacakmu.", "Mulai mencari di Joineka sekarang:)" ]'>
                         <span class="wrap"></span>
                     </a>
                     <div class="search-form mt-4">
-                        <form action="/" method="POST">
-                           <input type="text" maxlength="2048" title="Search" name="q" class="form-control input-lg mr-1" spellcheck="false"  autocapitalize="off" autocorrect="off" autofocus>
-                        </form>
+                        {% include 'main/forms1.html' %}
                     </div>
                 </div>
             </div>
