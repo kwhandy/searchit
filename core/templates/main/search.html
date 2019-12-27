@@ -80,6 +80,29 @@
             </a>
             {% endfor %}
           </div>
+          {% else %}
+          <div class="search-result">
+            <h6>Tidak ada hasil</h6>
+          </div>
+          {% endif %}
+
+
+          {% if res_list %}
+          <div class="search-result">
+            {% for result in res_list %}
+            <a href="{{ result.link }}" class="card-link m-0">
+              <h6 class="m-0 p-0">
+                <span>
+                  {{ result.related|safe|escape }}
+                </span>
+              </h6>
+            </a>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="search-result">
+            <h6>Tidak ada hasil</h6>
+          </div>
           {% endif %}
 
           <!-- <div class="text-center">

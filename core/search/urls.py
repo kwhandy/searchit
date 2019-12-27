@@ -7,5 +7,5 @@ from .views import (
 app_name = "search"
 urlpatterns = [
     # path("", home, name="home"),
-    path("search/", search, name="q"),
+    path("search", search, name="q"),
 ]

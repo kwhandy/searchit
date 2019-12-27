@@ -24,19 +24,29 @@ def run_query(search_terms):
     # bing_key = read_bing_key()
     search_url = 'https://api.cognitive.microsoft.com/bing/v7.0/search'
     headers = {'Ocp-Apim-Subscription-Key': bing_key}
-    params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML'}
+    params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML', 'count': 20}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
 
     results = []
-    for result in search_results['webPages']['value']:
+
+    for result in search_results['webPages']['value']: # and search_results['relatedSearches']['value']:
         results.append({
             'title': result['name'],
             'link': result['url'],
             'summary': result['snippet'],
+            # 'related': result['text'],
+            # 'relatedUrl': result['webSearchUrl'],
         })
+    # elif search_results['relatedSearches']['value']:
+    #     for result in search_results['relatedSearches']['value']:
+    #         results.append({
+    #             'related': result['text'],
+    #             'relatedUrl': result['webSearchUrl'],
+    #         })
+            
 
     return results
 
