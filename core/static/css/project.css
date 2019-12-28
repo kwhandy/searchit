@@ -1,5 +1,15 @@
 /* These styles are generated from project.scss. */
 
+@import url('https://cdn.jsdelivr.net/npm/inter-ui@3.11.0/inter.css');
+html { 
+  font-family: 'Inter', sans-serif; 
+}
+@supports (font-variation-settings: normal) {
+  html { 
+    font-family: 'Inter var', sans-serif; 
+  }
+}
+
 .alert-debug {
   color: black;
   background-color: white;

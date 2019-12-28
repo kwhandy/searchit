@@ -109,7 +109,7 @@
 
           {% if result_list %}
           <div class="search-result">
-            <h6>Kata kunci terkait</p>
+            <h6>Orang lain juga menelusuri</h6>
             {% for result in result_list.relatedSearches.value %}
             <a href="search?q={{ result.text|rpl }}" class="m-0">
               <p class="m-0 pb-1">
@@ -119,7 +119,7 @@
               </p>
             </a>
             {% empty %}
-            <small class="text-muted">Tidak ada kata kunci terkait '<b>{{ query|truncatechars:45 }}</b>'</small>
+            <small class="text-muted">Tidak ada pencarian terkait '<b>{{ query|truncatechars:45 }}</b>'</small>
             {% endfor %}
           </div>
           {% endif %}
@@ -145,7 +145,7 @@
 <div class="container d-block d-md-none pt-1 pb-5 bootstrap snippet">
   <div class="row pt-">
     <div class="col">
-      <h6>Kata kunci terkait</h6>
+      <h6>Orang lain juga menelusuri</h6>
     </div>
   </div>
   <div class="row">
@@ -165,7 +165,7 @@
             </a>
             {% empty %}
             <small class="text-muted">
-              Tidak ada kata kunci terkait '<b>{{ query|truncatechars:45 }}</b>'
+              Tidak ada pencarian terkait '<b>{{ query|truncatechars:45 }}</b>'
             </small>
             {% endfor %}
           </div>
