@@ -1,62 +1,59 @@
 import json
 import requests
+from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
 
-def read_bing_key():
-    bing_api_key = None
+# def read_bing_key():
+#     bing_api_key = None
 
-    try:
-        with open('bing.key', 'r') as f:
-            bing_api_key = f.readline().strip()
-    except:
-        try:
-            with open('../bing.key', 'r') as f:
-                bing_api_key = f.readline().strip()
-        except:
-            raise IOError('bing.key file not found!')
+#     try:
+#         with open('bing.key', 'r') as f:
+#             bing_api_key = f.readline().strip()
+#     except:
+#         try:
+#             with open('../bing.key', 'r') as f:
+#                 bing_api_key = f.readline().strip()
+#         except:
+#             raise IOError('bing.key file not found!')
 
-    if not bing_api_key:
-        raise KeyError('Bing key not found.')
+#     if not bing_api_key:
+#         raise KeyError('Bing key not found.')
 
-    return bing_api_key
+#     return bing_api_key
 
 def run_query(search_terms):
-    bing_key = 'f04045dd9c4846e397488db6bc9c308a'
+    bing_key = settings.BING_KEY
     # bing_key = read_bing_key()
     search_url = 'https://api.cognitive.microsoft.com/bing/v7.0/search'
     headers = {'Ocp-Apim-Subscription-Key': bing_key}
-    params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML', 'count': 20}
+    params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML', 'count': 15}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
 
-    results = []
+    return search_results
 
-    for result in search_results['webPages']['value']: # and search_results['relatedSearches']['value']:
-        results.append({
-            'title': result['name'],
-            'link': result['url'],
-            'summary': result['snippet'],
-            # 'related': result['text'],
-            # 'relatedUrl': result['webSearchUrl'],
-        })
-    # elif search_results['relatedSearches']['value']:
-    #     for result in search_results['relatedSearches']['value']:
-    #         results.append({
-    #             'related': result['text'],
-    #             'relatedUrl': result['webSearchUrl'],
-    #         })
-            
 
-    return results
 
-def main():
-    print("Bing search")
-    query_str = input("Enter a query to search for: ")
-    results = run_query(query_str)
+    # if search_results['webPages'] is None:
+    #     HttpResponseRedirect('/')
+    # else:
+    # for result in search_results:
+        # results.append({
+        #     'title': result['webPages']['value']['name'],
+        #     'link': result['webPages']['value']['url'],
+        #     'summary': result['webPages']['value']['snippet'],
+        # })
+    # return results
 
-    for result in results:
-        print(result['title'])
+# def main():
+#     print("Bing search")
+#     query_str = input("Enter a query to search for: ")
+#     results = run_query(query_str)
 
-if __name__ == '__main__':
-    main()
+#     for result in results:
+#         print(result['title'])
+
+# if __name__ == '__main__':
+#     main()

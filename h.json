@@ -1,0 +1,57 @@
+{
+    "Demo": {
+      "_type": "SearchResponse",
+      "webPages": {
+        "webSearchUrl": "https://www.bing.com/search?q=startup+kedaeco",
+        "totalEstimatedMatches": 2,
+        "value": [
+          {
+            "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.0",
+            "deepLinks": null,
+            "dateLastCrawled": "2019-12-16T13:31:00Z",
+            "about": null,
+            "name": "cdn1.npcdn.net",
+            "url": "https://cdn1.npcdn.net/userfiles/18752/download/1444269622_377ba0bdd045133a84042c972ace0c20/Mossoff_Presentation_Elite.m4v",
+            "displayUrl": "https://cdn1.npcdn.net/userfiles/18752/download/1444269622_377ba0bdd045133a84042c972...",
+            "snippet": "ftypM4V M4V M4A mp42isom :moovlmvhdÒ:_]Ò:_¡ XM @ \\trak\\tkhd Ò:_]Ò:_¡ M @ à h$edts elst M Ômdia mdhdÒ:_]Ò:_¡ XM UÄ1hdlrvideCore Media Video {minf vmhd ..."
+          },
+          {
+            "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.1",
+            "deepLinks": null,
+            "dateLastCrawled": "2019-12-24T15:37:00Z",
+            "about": null,
+            "name": "2015-10-05到期删除国际域名名单,2015年10月05日国际域名到期删除名单",
+            "url": "http://domain.webmasterhome.cn/com/2015-10-05.asp",
+            "displayUrl": "domain.webmasterhome.cn/com/2015-10-05.asp",
+            "snippet": "2015年10月05日国际域名到期删除名单查询，2015-10-05到期的国际域名"
+          }
+        ]
+      },
+      "images": null,
+      "news": null,
+      "relatedSearches": null,
+      "videos": null,
+      "rankingResponse": {
+        "mainline": {
+          "items": [
+            {
+              "answerType": "WebPages",
+              "value": {
+                "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.0"
+              },
+              "resultIndex": 0
+            },
+            {
+              "answerType": "WebPages",
+              "value": {
+                "id": "https://api.cognitive.microsoft.com/api/v7/#WebPages.1"
+              },
+              "resultIndex": 1
+            }
+          ]
+        },
+        "sidebar": null
+      },
+      "entities": null
+    },
+  }

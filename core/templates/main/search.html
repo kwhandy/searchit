@@ -1,4 +1,5 @@
 {% extends "result.html" %}
+{% load rpl %}
 {% load humanize %}
 
 {% block head_title %}Pencarian '{{ query }}'{% endblock %}
@@ -7,29 +8,31 @@
 <div class="container d-block d-md-none pt-5 bootstrap snippet">
   <div class="row mt-5 pt-5">
     <div class="col">
-      <small class="text-muted">Hasil pencarian dari '<b>{{ query }}</b>'</small>
+      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:64 }}</b>'</small>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6 col-xl-7">
       <div class="ibox float-e-margins">
-        <div class="ibox-content pl-0">
+        <div class="ibox-content pb-1 pl-0">
 
           {% if result_list %}
           <div class="search-result">
-            {% for result in result_list %}
-            <a href="{{ result.link }}" class="card-link">
-            <h6 class="m-0 p-0">
-              <span>
-                {{ result.title|safe|escape }}
-              </span>
-            </h6>
-            <small onclick="return false;" class="search-link">{{ result.link|truncatechars:45 }}</small>
+            {% for result in result_list.webPages.value %}
+            <a href="{{ result.url }}" class="card-link m-0">
+              <h6 class="m-0 p-0">
+                <span>
+                  {{ result.name|safe|escape }}
+                </span>
+              </h6>
+            <small onclick="return false;" class="search-link">{{ result.url|truncatechars:45 }}</small>
             <p class="text-dark card-link">
-              {{ result.summary|safe|escape }}
+              {{ result.snippet|safe|escape }}
             </p>
-            <div class="hr-line-dashed"></div>
+            {% if forloop.last %}{% else %}<div class="hr-line-dashed"></div>{% endif %}
             </a>
+            {% empty %}
+            <h5>Tidak ada hasil untuk pencarian ini:(</h5>
             {% endfor %}
           </div>
           {% endif %}
@@ -52,56 +55,119 @@
     </div>
   </div>
 </div>
-<div class="container d-none d-md-block pt-5 bootstrap snippet">
+<div class="container d-none d-md-block pt-5 pb-5 mb-3 bootstrap snippet">
   <div class="row pt-3">
     <div class="col">
-      <small class="text-muted">Hasil pencarian dari '<b>{{ query }}</b>'</small>
+      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:64 }}</b>'</small>
     </div>
   </div>
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6 col-xl-7">
       <div class="ibox float-e-margins">
-        <div class="ibox-content pl-0">
+        <div class="ibox-content pb-0 pl-0">
 
           {% if result_list %}
           <div class="search-result">
-            {% for result in result_list %}
-            <a href="{{ result.link }}" class="card-link m-0">
+            {% for result in result_list.webPages.value %}
+            <a href="{{ result.url }}" class="card-link m-0">
               <h6 class="m-0 p-0">
                 <span>
-                  {{ result.title|safe|escape }}
+                  {{ result.name|safe|escape }}
                 </span>
               </h6>
-              <small onclick="return false;" class="search-link">{{ result.link|truncatechars:64 }}</small>
+              <small onclick="return false;" class="search-link">{{ result.url|truncatechars:64 }}</small>
               <p class="text-dark card-link">
-                {{ result.summary|safe|escape }}
+                {{ result.snippet|safe|escape }}
               </p>
-              <div class="hr-line-dashed"></div>
+              {% if forloop.last %}{% else %}<div class="hr-line-dashed"></div>{% endif %}
             </a>
+            {% empty %}
+            <h5>Tidak ada hasil untuk pencarian ini:(</h5>
             {% endfor %}
-          </div>
-          {% else %}
-          <div class="search-result">
-            <h6>Tidak ada hasil</h6>
           </div>
           {% endif %}
 
+          <!-- <div class="text-center">
+            <div class="btn-group">
+              <button class="btn btn-white" type="button"><i class="glyphicon glyphicon-chevron-left"></i></button>
+              <button class="btn btn-white">1</button>
+              <button class="btn btn-white  active">2</button>
+              <button class="btn btn-white">3</button>
+              <button class="btn btn-white">4</button>
+              <button class="btn btn-white">5</button>
+              <button class="btn btn-white">6</button>
+              <button class="btn btn-white">7</button>
+              <button class="btn btn-white" type="button"><i class="glyphicon glyphicon-chevron-right"></i> </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-6 col-xl-5">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content pt-1 pl-0">
 
-          {% if res_list %}
+          {% if result_list %}
           <div class="search-result">
-            {% for result in res_list %}
-            <a href="{{ result.link }}" class="card-link m-0">
-              <h6 class="m-0 p-0">
+            <h6>Kata kunci terkait</p>
+            {% for result in result_list.relatedSearches.value %}
+            <a href="search?q={{ result.text|rpl }}" class="m-0">
+              <p class="m-0 pb-1">
                 <span>
-                  {{ result.related|safe|escape }}
+                  {{ result.text|safe|escape }}
                 </span>
-              </h6>
+              </p>
             </a>
+            {% empty %}
+            <small class="text-muted">Tidak ada kata kunci terkait '<b>{{ query|truncatechars:45 }}</b>'</small>
             {% endfor %}
           </div>
-          {% else %}
+          {% endif %}
+
+          <!-- <div class="text-center">
+            <div class="btn-group">
+              <button class="btn btn-white" type="button"><i class="glyphicon glyphicon-chevron-left"></i></button>
+              <button class="btn btn-white">1</button>
+              <button class="btn btn-white  active">2</button>
+              <button class="btn btn-white">3</button>
+              <button class="btn btn-white">4</button>
+              <button class="btn btn-white">5</button>
+              <button class="btn btn-white">6</button>
+              <button class="btn btn-white">7</button>
+              <button class="btn btn-white" type="button"><i class="glyphicon glyphicon-chevron-right"></i> </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container d-block d-md-none pt-1 pb-5 bootstrap snippet">
+  <div class="row pt-">
+    <div class="col">
+      <h6>Kata kunci terkait</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-7">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content pt-1 pl-0">
+
+          {% if result_list %}
           <div class="search-result">
-            <h6>Tidak ada hasil</h6>
+            {% for result in result_list.relatedSearches.value %}
+            <a href="search?q={{ result.text|rpl }}" class="m-0">
+              <p class="m-0 pb-1">
+                <span>
+                  {{ result.text|safe|escape }}
+                </span>
+              </p>
+            </a>
+            {% empty %}
+            <small class="text-muted">
+              Tidak ada kata kunci terkait '<b>{{ query|truncatechars:45 }}</b>'
+            </small>
+            {% endfor %}
           </div>
           {% endif %}
 

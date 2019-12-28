@@ -10,17 +10,12 @@ def search(request):
     if request.method == 'GET':
         query = request.GET.get('q', '') # request.POST['query'].strip() 
         if query:
-
             # Run our Bing function to get the results list!
             result_list = run_query(query)
-            res_list = run_query(query)
-            # if result_list is not None:
-            #     return result_list
-            # else:
-            #     return HttpResponseRedirect('/')
+            # print(result_list)
         else:
             return HttpResponseRedirect('/')
-    return render(request, 'main/search.html', {'result_list': result_list, 'res_list': res_list,'query': query})
+    return render(request, 'main/search.html', {'result_list': result_list, 'query': query})
 
 
 # class SearchView(View):

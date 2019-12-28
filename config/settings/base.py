@@ -267,5 +267,6 @@ SOCIALACCOUNT_ADAPTER = "core.users.adapters.SocialAccountAdapter"
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation
 INSTALLED_APPS += ["compressor"]
 STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
-# Your stuff...
-# ------------------------------------------------------------------------------
+
+
+BING_KEY = 'f04045dd9c4846e397488db6bc9c308a'
