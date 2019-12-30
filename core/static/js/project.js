@@ -7,8 +7,8 @@ $('#dQ2i_').keydown(function(event) {
 });
 
 $('#search').submit(function(e) {
-   if (!$('#prvtr').val()) {
-       e.preventDefault();
+   if ($('#prvtr').val()) {
+      return false;
    }
 });
 
