@@ -8,7 +8,7 @@ $('#dQ2i_').keydown(function(event) {
 
 $('#search').submit(function(e) {
    if ($('#prvtr').val()) {
-      return false;
+      e.preventDefault();
    }
 });
 
