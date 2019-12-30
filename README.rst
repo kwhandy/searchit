@@ -130,19 +130,19 @@ You can follow postgres setup section in `this page`_.
     $ sudo ufw allow 8000
 
 
-* Test the code, after that quit with ctrl + C
+* Test the code, after that quit with ctrl + C::
 
     $ python3 manage.py runserver 0.0.0.0:8000
 
-* Check Gunicorn exist or not(still in the same directory), then deactivate environment
+* Check Gunicorn exist or not(still in the same directory), then deactivate environment::
 
     $ file ../bin/gunicorn
 
-* Create new gunicorn.service file
+* Create new gunicorn.service file::
 
     $ sudo nano /etc/systemd/system/gunicorn.service
 
-* Fill that file with this code, after finish just save it
+* Fill that file with this code, after finish just save it::
 
     [Unit]
     Description=gunicorn daemon
@@ -158,11 +158,11 @@ You can follow postgres setup section in `this page`_.
     [Install]
     WantedBy=multi-user.target
 
-* Create new gunicorn.socket file
+* Create new gunicorn.socket file::
 
     $ sudo nano /etc/systemd/system/gunicorn.socket
 
-* Fill that file with this code, after finish just save it
+* Fill that file with this code, after finish just save it::
 
     [Unit]
     Description=gunicorn socket
@@ -173,22 +173,22 @@ You can follow postgres setup section in `this page`_.
     [Install]
     WantedBy=sockets.target
 
-* Test Gunicorn files we added before
+* Test Gunicorn files we added before::
 
     $ sudo systemctl start gunicorn.socket
     $ sudo systemctl enable gunicorn.socket
 
-* After doing any modification to Codebase or Gunicorn files
+* After doing any modification to Codebase or Gunicorn files::
 
     $ sudo systemctl daemon-reload
     $ sudo systemctl restart gunicorn
 
-* Check if Gunicorn ready to live
+* Check if Gunicorn ready to live::
 
     $ sudo systemctl status gunicorn.socket
     $ sudo systemctl status gunicorn
 
-* Create nginx file for this project
+* Create nginx file for this project::
 
     $ sudo nano /etc/nginx/sites-available/<name Codebase(project) directory>
 
@@ -216,11 +216,11 @@ You can follow postgres setup section in `this page`_.
     }
 
 * Create soft link in Nginx's site-enabled directory
-* Check Nginx files that we added before, it should be 'ok'
+* Check Nginx files that we added before, it should be 'ok'::
 
     $ sudo nginx -t
 
-* Reload + restart nginx files (doin first time or make change in web server / Nginx)
+* Reload + restart nginx files (doin first time or make change in web server / Nginx)::
 
     $ sudo systemctl daemon-reload
     $ sudo service nginx restart

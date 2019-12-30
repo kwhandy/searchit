@@ -1,11 +1,12 @@
 /* These styles are generated from project.scss. */
 
-html { 
-  font-family: 'Inter', sans-serif; 
+html {
+  font-family: 'Inter', sans-serif;
 }
+
 @supports (font-variation-settings: normal) {
-  html { 
-    font-family: 'Inter var', sans-serif; 
+  html {
+    font-family: 'Inter var', sans-serif;
   }
 }
 
@@ -65,13 +66,18 @@ h2 {
 
 
 
-.context-dark, .bg-gray-dark, .bg-primary {
+.context-dark,
+.bg-gray-dark,
+.bg-primary {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+.footer-classic a,
+.footer-classic a:focus,
+.footer-classic a:active {
   color: #ffffff;
 }
+
 .nav-list li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -83,7 +89,8 @@ h2 {
   visibility: visible;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -99,9 +106,11 @@ ul, ol {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
 }
+
 .social-container .col {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .nav-list li a:before {
   content: "\f14f";
   font: 400 21px/1 "Material Design Icons";
@@ -114,6 +123,143 @@ ul, ol {
   visibility: hidden;
   transition: .22s ease;
 }
-                  
-                                  
 
+
+.page-title {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  padding: 200px 0 115px;
+  background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+  /* background-color: #F7F9FA;  */
+}
+
+.page-title__holder {
+  max-width: 878px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.page-title__title {
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.page-title__subtitle {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.page-title.bg-color-overlay .page-title__title,
+.page-title.bg-color-overlay .page-title__subtitle,
+.page-title .entry__meta li,
+.page-title .entry__meta a {
+  color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+  .page-title {
+    padding: 80px 0 130px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .page-title {
+    padding: 40px 0;
+  }
+}
+
+.section-wrap {
+  padding: 100px 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .section-wrap {
+    padding: 80px 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-wrap {
+    padding: 60px 0;
+  }
+}
+
+.section-wrap--pb-large {
+  /* padding-bottom: 180px; */
+}
+
+@media only screen and (max-width: 767px) {
+  .section-wrap--pb-large {
+    padding-bottom: 60px;
+  }
+}
+
+.entry__article-wrap {
+  margin-bottom: 48px;
+}
+
+@media only screen and (min-width: 992px) {
+  .entry__article-wrap .entry__article {
+    padding-left: 20px;
+  }
+
+  .entry__article-wrap {
+    display: flex;
+  }
+}
+
+.entry__article>h1,
+.entry__article>h2,
+.entry__article>h3,
+.entry__article>h4,
+.entry__article>h5,
+.entry__article>h6 {
+  margin-top: 36px;
+}
+
+.entry__article>p,
+.entry__article>ul,
+.entry__article>ol {
+  margin-bottom: 34px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.entry__article p>a,
+.entry__article ul:not(.entry__meta) a {
+  color: #4C86E7;
+}
+
+.entry__article p>a:hover,
+.entry__article ul:not(.entry__meta) a:hover {
+  color: #1ED760;
+}
+
+.entry__article figure {
+  margin-bottom: 24px;
+}
+
+.entry__article ol,
+.entry__article ul {
+  padding-left: 16px;
+  line-height: 30px;
+}
+
+.entry__article ul {
+  list-style: disc;
+}
+
+.entry__article .entry__meta {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
