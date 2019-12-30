@@ -215,7 +215,10 @@ You can follow postgres setup section in `this page`_.
         }
     }
 
-* Create soft link in Nginx's site-enabled directory
+* Create soft link in Nginx's site-enabled directory::
+
+    $ sudo ln -s /etc/nginx/sites-available/<name Codebase(project) directory> /etc/nginx/sites-enabled
+
 * Check Nginx files that we added before, it should be 'ok'::
 
     $ sudo nginx -t
