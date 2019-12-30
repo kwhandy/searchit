@@ -6,12 +6,19 @@ $('#dQ2i_').keydown(function(event) {
     }
 });
 
-$('#search').submit(function(e) {
-   if (!$('#prvtr').val()) {
-      // e.preventDefault();
-      return false;
+function check(form){
+   if (form.q.value == ""){
+     return (false);
    }
-});
+   return (true);
+}
+
+// $('#search').submit(function(e) {
+//    if (!$('#prvtr').val()) {
+//       // e.preventDefault();
+//       return false;
+//    }
+// });
 
 var TxtType = function(el, toRotate, period) {
    this.toRotate = toRotate;
