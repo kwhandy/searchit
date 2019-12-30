@@ -115,9 +115,10 @@ You can follow postgres setup section in `this page`_.
     $ export DATABASE_URL='postgres://<postgres-username>:<postgres-password>@127.0.0.1:5432/<database-name>'
     $ export REDIS_URL='redis://127.0.0.1:6379/1'
 
-* Comment config that force server to redirect to it's own installed SSL (we don't have enough money now, so use CF)
+* Comment config that force server to redirect to it's own installed SSL (we don't have enough money now, so use CF)::
 
-    SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+    # SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+    # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 * Doin normal Django setup::
 
