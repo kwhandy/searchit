@@ -8,7 +8,7 @@
 <div class="container d-block d-md-none pt-5 bootstrap snippet">
   <div class="row mt-5 pt-5">
     <div class="col">
-      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:64 }}</b>'</small>
+      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:36 }}</b>'</small>
     </div>
   </div>
   <div class="row">
@@ -58,7 +58,7 @@
 <div class="container d-none d-md-block pt-5 pb-5 mb-3 bootstrap snippet">
   <div class="row pt-3">
     <div class="col">
-      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:64 }}</b>'</small>
+      <small class="text-muted">Menampilkan hasil pencarian dari '<b>{{ query|truncatechars:45 }}</b>'</small>
     </div>
   </div>
   <div class="row">
@@ -165,7 +165,7 @@
             </a>
             {% empty %}
             <small class="text-muted">
-              Tidak ada pencarian terkait '<b>{{ query|truncatechars:45 }}</b>'
+              Tidak ada pencarian terkait '<b>{{ query|truncatechars:36 }}</b>'
             </small>
             {% endfor %}
           </div>
