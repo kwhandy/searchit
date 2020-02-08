@@ -4,11 +4,11 @@ from django.views import View
 from .service import run_query
 
 
-def search(request): 
+def search(request):
     result_list = []
 
     if request.method == 'GET':
-        query = request.GET.get('q', '') # request.POST['query'].strip() 
+        query = request.GET.get('q', '') # request.POST['query'].strip()
         if query:
             # Run our Bing function to get the results list!
             result_list = run_query(query)

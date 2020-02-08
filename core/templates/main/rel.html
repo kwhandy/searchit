@@ -1,10 +1,5 @@
-{% extends "result.html" %}
-{% load rpl %}
-{% load humanize %}
+<!-- MUST BE S1 OFFER -->
 
-{% block head_title %}Pencarian '{{ query }}'{% endblock %}
-
-{% block content %}
 <div class="container d-block d-md-none pt-5 bootstrap snippet">
   <div class="row mt-5 pt-5">
     <div class="col">
@@ -77,6 +72,63 @@
         </div>
       </div>
     </div>
+    <div class="col-12 col-md-4 col-lg-6 col-xl-5">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content pt-1 pl-0">
+
+          {% if result_list %}
+          <div class="search-result">
+            <h6>Orang lain juga menelusuri</h6>
+            {% for result in result_list.relatedSearches.value %}
+            <a href="search?q={{ result.text|rpl }}" class="m-0">
+              <p class="m-0 pb-1">
+                <span>
+                  {{ result.text|safe|escape }}
+                </span>
+              </p>
+            </a>
+            {% empty %}
+            <small class="text-muted">Tidak ada penelusuran terkait '<b>{{ query|truncatechars:45 }}</b>'</small>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-{% endblock content %}
+<div class="container d-block d-md-none pt-1 pb-5 bootstrap snippet">
+  <div class="row pt-">
+    <div class="col">
+      <h6>Orang lain juga menelusuri</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-7">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content pt-1 pl-0">
+
+          {% if result_list %}
+          <div class="search-result">
+            {% for result in result_list.relatedSearches.value %}
+            <a href="search?q={{ result.text|rpl }}" class="m-0">
+              <p class="m-0 pb-1">
+                <span>
+                  {{ result.text|safe|escape }}
+                </span>
+              </p>
+            </a>
+            {% empty %}
+            <small class="text-muted">
+              Tidak ada penelusuran terkait '<b>{{ query|truncatechars:36 }}</b>'
+            </small>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
