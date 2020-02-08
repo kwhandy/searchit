@@ -269,4 +269,4 @@ INSTALLED_APPS += ["compressor"]
 STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 
 
-BING_KEY = 'f04045dd9c4846e397488db6bc9c308a'
+BING_KEY = env("DJANGO_BING_KEY")
