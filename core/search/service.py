@@ -24,7 +24,7 @@ from django.conf import settings
 def run_query(search_terms):
     bing_key = settings.BING_KEY
     # bing_key = read_bing_key()
-    search_url = 'https://api.cognitive.microsoft.com/bing/v7.0/search'
+    search_url = 'https://joineka.cognitiveservices.azure.com/bing/v7.0/search'
     headers = {'Ocp-Apim-Subscription-Key': bing_key}
     params = {'q': search_terms, 'textDecorations': True, 'textFormat': 'HTML', 'count': 15}
 
