@@ -25,7 +25,7 @@ def run_query(search_terms):
     bing_key = settings.BING_KEY
     search_url = 'https://joineka.cognitiveservices.azure.com/bing/v7.0/search'
     headers = {'Ocp-Apim-Subscription-Key': bing_key, 'BingAPIs-Market': 'en-ID'}
-    params = {'q': search_terms, 'safeSearch': 'Moderate', 'textDecorations': True, 'textFormat': 'HTML', 'count': 15}
+    params = {'q': search_terms, 'safeSearch': 'Off', 'textDecorations': True, 'textFormat': 'HTML', 'count': 15}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
