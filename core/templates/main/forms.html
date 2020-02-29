@@ -1,3 +1,9 @@
 <form id="search" action="{% url 'search:q' %}" method="GET">
-<input type="text" width="100px" maxlength="2048" title="Search" name="q" id="prvtr" value="{% if query %}{{ query }}{% endif %}" class="form-control input-lg mr-1" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off">
+<!-- <input type="text" width="100px" maxlength="2048" title="Search" name="q" id="prvtr" value="{% if query %}{{ query }}{% endif %}" class="form-control input-lg mr-1" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off"> -->
+<div class="input-group mb-3">
+    <input type="text" class="form-control input-lg m-0" width="100px" maxlength="2048" title="Search" placeholder='Cari sesuatu' value="{% if query %}{{ query }}{% endif %}" name="q" id="prvtr" spellcheck="false" autocomplete="off"  autocapitalize="off" autocorrect="off" autofocus aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button type="submit" class="btn text-white pl-3 pr-3 font-weight-semibold" style="margin-top: -1px;border: 2px solid #3b97ed;border-top-right-radius: 2rem; border-bottom-right-radius: 2rem;background-color: #3b97ed;" type="button">Cari</button>
+    </div>
+  </div>
 </form>

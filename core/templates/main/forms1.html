@@ -1,4 +1,12 @@
 <form id="search" action="{% url 'search:q' %}" method="GET" onsubmit="return check(this)">
-<input type="text" maxlength="2048" title="Search" name="q" id="prvtr" class="form-control input-lg mr-1" spellcheck="false" autocomplete="off"  autocapitalize="off" autocorrect="off" autofocus>
-<button type="submit" class="btn btn-sm btn-light text-dark mt-4 pt-2 pb-2 pl-4 pr-4">Cari di Joineka Search</button>
+<!-- <input type="text" maxlength="2048" title="Search" placeholder="tekan Enter kemudian" name="q" id="prvtr" class="form-control input-lg mr-1" spellcheck="false" autocomplete="off"  autocapitalize="off" autocorrect="off" autofocus> -->
+<!-- <button type="submit" class="btn btn-sm btn-light text-dark mt-4 pt-2 pb-2 pl-4 pr-4">Cari di Joineka Search</button> -->
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control input-lg m-0" maxlength="2048" title="Search" placeholder='kemudian tekan "Enter"' name="q" id="prvtr" spellcheck="false" autocomplete="off"  autocapitalize="off" autocorrect="off" autofocus aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button type="submit" class="btn text-white pl-3 pr-3 font-weight-semibold" style="margin-top: -1px;border: 2px solid #3b97ed;border-top-right-radius: 2rem; border-bottom-right-radius: 2rem;background-color: #3b97ed;" type="button">Cari</button>
+  </div>
+</div>
+
 </form>
