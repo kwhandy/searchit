@@ -1,22 +1,8 @@
-Joineka
+SearchIt
 =======
 
-Indonesia's modern web portal for SEA
+SearchIt(previously Joineka) is modern search engine powered by Bing API that built with pure Python and Django framework. Feel free to copy and use (even research and commercial) but don't forget to contribute like add more i18n, security layer, etc because this was just MVP then collab together for the future of this project.
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-     :target: https://github.com/ambv/black
-     :alt: Black code style
-
-
-Settings
---------
-
-Moved to settings_.
-
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
 
 Basic Commands
 --------------
@@ -64,18 +50,9 @@ Running tests with py.test
 
   $ pytest
 
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
 
 
-
-
-
-AWS Lightsail Deployment
+VPS Deployment
 ------------------------
 
 * Make sure doing bunch of command below::
