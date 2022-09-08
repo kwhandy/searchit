@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Install local deps
+    init: pip install -r requirements/local.txt
